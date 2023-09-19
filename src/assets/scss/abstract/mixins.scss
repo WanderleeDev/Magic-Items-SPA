@@ -1,0 +1,21 @@
+@mixin flex($display, $direction, $wrap:wrap, $justify:initial, $align:initial, $gap:0){
+  display: $display;
+  flex-flow: $direction $wrap;
+  flex-flow: $direction $wrap;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin textFormatting($font-size, $line-height,$spacing:0.1rem){
+  font-size: $font-size;
+  line-height: $line-height;
+  letter-spacing: $spacing;
+}
+
+/*
+Example:
+main{
+  @include flex(flex, row, wrap, space-around, center, 1rem);
+}
+*/

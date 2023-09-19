@@ -1,0 +1,40 @@
+$colors: (
+  clr-primary: #260B1A,
+  clr-secondary: #F2D9BB,
+  clr-complementary: #5F7373,
+  clr-complementary-2: #8C694A,
+  clr-complementary-3: #26130B,
+  clr-gradient: (var(--direction),#2F1019,#BBB49E,#5C4232)
+);
+
+$spacing: (
+  spacing-1: 0.5rem,
+  spacing-2: 1rem,
+  spacing-3: 1.5rem,
+  spacing-4: 2rem,
+  spacing-5: 3rem,
+  spacing-6: 4rem,
+  spacing-7: 5rem,
+  spacing-8: 10rem,
+  spacing-responsive: min(20vw, 5rem)
+);
+
+$font: (
+  xs-font : 0.8rem,
+  sm-font: 1rem,
+  base-font: 1.5rem,
+  lg-font: 2rem,
+  xl-font: 2.5rem,
+  responsive-font: min(12vw, 6rem),
+);
+
+/*
+Example:
+h1{
+  color: map-get($colors , clr-secondary-dark );
+}
+
+palette{
+  https://colorhunt.co/palette/aa77ffc9eeff97deff62cdff
+}
+*/

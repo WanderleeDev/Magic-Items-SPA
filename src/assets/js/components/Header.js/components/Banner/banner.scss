@@ -1,0 +1,48 @@
+@use '@scss/shared.scss' as *;
+
+.banner{
+  position: relative;
+  display: grid;
+  align-content: center;
+  height: rem(520);
+  //margin-top: 6rem;
+  background: url('../../../../../images/banner.webp') no-repeat fixed  bottom center/100%;
+  background-blend-mode: difference;
+  background-size: cover;
+  background-color: rgba(0, 255, 255, 0.108);
+  user-select: none;
+
+  @media screen and (min-width: rem(800)) {
+    height: 80vh;
+  }
+
+  ::before,
+  ::after{
+    font-size: max( 1.1vw, 0.9rem);
+    padding: 0.5rem;
+    position: absolute;
+    bottom: 15%; //13%
+    line-height: 1.2;
+    opacity: 0;
+  }
+
+  ::before{
+    --delay: 0s;
+    content: '"Artículos de primera calidad al mejor precio"';
+    animation: appear linear 6s infinite var(--delay);
+  }
+
+  ::after{
+    --delay: 3s;
+    content: '"Todas las semanas libros, anillos,orbes y mas ..."';
+    animation: appear linear 6s infinite var(--delay);
+  }
+
+  &-title{
+    padding: 1rem;
+    margin-top: 7rem;
+    color: #ececec;
+    font-size: map-get($font, responsive-font );
+    font-weight: 700;
+  }
+}

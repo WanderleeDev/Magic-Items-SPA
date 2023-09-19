@@ -1,0 +1,182 @@
+@use '@scss/shared.scss' as *;
+
+.headerPage{
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  
+  &-navbar{
+    @include flex(flex,row, nowrap, space-between, center,1rem);
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 6rem;
+    padding-inline: 1rem;
+    font-size: 1.5rem;
+    color: var(--negro);
+    z-index: 10;
+
+    @media screen and (min-width: rem(800)) {
+      font-size: map-get($font , sm-font);
+      justify-content: center;
+    }
+  }
+
+  &-containerLogo{
+    display: none;
+  }
+
+  &-btnMenu{
+    @media screen and (min-width: rem(800)) {
+      display: none;
+    }
+  }
+
+  &-btnSvg{
+    width: 2rem;
+    height: 2rem;
+    //color: var(--negro);
+    cursor: pointer;
+  }
+
+  &-searchBar{
+    @include flex(flex,row, nowrap, space-between, center,0.3rem);
+    width: max(20%, 12rem);
+    padding-inline: 0.5rem;
+    border: solid 1px var(--negro);
+    border-radius: 2rem;
+    @media screen and (min-width: rem(800)) {
+      order: -2;
+    }
+  }
+
+  &-labelSearch{
+    display: grid;
+    place-items: center;
+    order: 1;
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  &-searchIcon{
+    @extend .headerPage-btnSvg;
+    border-left:solid rem(1) currentColor ;  
+  }
+
+  &-containerIcons{
+    display: flex;
+    gap: 1rem;
+  }
+  
+  &-searchInput{
+    width: 100%;
+    border-radius: 1rem;
+    outline: transparent;
+    padding-left: .5rem;
+  }
+
+  &-shoppingCarLink{
+    display: none;
+    animation: aniShoppingCar 1s ease-in-out 1;
+    @media screen and (min-width: rem(400)) {
+      display: initial;
+    }
+  }
+
+  &-shoppingCarIcon{
+    @extend .headerPage-btnSvg;
+  }
+  
+  &-loginLink{
+  }
+  
+  &-loginIcon{
+    @extend .headerPage-btnSvg;  
+  }
+
+  &-menu{
+    //($display, $direction, $wrap:wrap, $justify:initial, $align:initial, $gap:0)
+    @include flex(flex,column,wrap,center,center,2rem);
+    position: fixed;
+    inset: 6rem 0 auto;
+    height: calc(100vh - 6rem);
+    clip-path: circle(0% at 6% -8%);
+    transition: clip-path 0.5s linear;
+    z-index: 20;
+    
+    @media screen and (min-width: rem(800)) {
+      flex-flow: row nowrap;
+      gap: 0;
+      min-width: 500px;
+      background-color: transparent;
+      //padding-inline: 2rem;
+      position: initial;
+      height: initial;
+      clip-path: none;
+      order: -1;
+    }
+  }
+  
+  &-li{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    :hover::before,
+    :focus::before{
+      content: "";
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      top: 50%;
+      left: 30%;
+      transform: translateY(-50%);
+      background-color: var(--negro);
+      animation: rotateIcon 1.5s linear infinite;
+    }
+  }
+  
+  &-link{
+    padding: 2rem;
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    @media screen and (min-width: rem(800)){
+      opacity: 1;
+      pointer-events: auto;
+      padding: initial;
+    } 
+  }
+}
+
+@keyframes rotateIcon {
+  0%{
+    transform: translateY(-50%) rotate(0) scale(1);
+  };
+  50%{
+    transform:  translateY(-50%) rotate(180deg) scale(0);
+    border-radius: 50%;
+  };
+  100%{
+    transform: translateY(-50%) rotate(360deg) scale(1);
+  }; 
+}
+
+@keyframes aniShoppingCar {
+  0%{
+    transform: scale(1);
+  }
+  5%{
+    transform: scale(0.8);
+  }
+  40%{
+    transform: scale(0.8) translate(0.3rem);
+    filter: hue-rotate(200deg);
+  }
+  80%{
+    transform: scale(0.8) translate(-0.3rem);
+  }
+  100%{
+    transform: scale(1);
+  }
+}

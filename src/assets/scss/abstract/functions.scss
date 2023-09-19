@@ -1,0 +1,11 @@
+//convertir a rem 
+@function rem ($px, $base:16){
+  @return(calc($px / $base) * 1rem);
+}
+
+/*
+Example:
+body{
+  font-size: rem(32);
+}
+*/
