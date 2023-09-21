@@ -1,0 +1,84 @@
+@use '@scss/shared.scss' as *;
+
+.dataCenter{
+  display: grid;
+  grid-template-rows: 1;
+  @media screen and (min-width: rem(600)) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (min-width:rem(900)) {
+    grid-column: 1/6;
+    //grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (min-width:rem(1050)) {
+    grid-column: 1/5;
+  }
+
+  &-listItem{
+    display: grid;
+    grid-template-rows: var(--rows, 0fr);
+    //transition: 0.3s grid-template-rows linear;
+  }
+  
+  &-accordionHead{
+    position: relative;
+    background-color: var(--blancoDark);
+    &::after{
+      position: absolute;
+      inset: 50% 0 0 92%;
+      transform: translateY(-50%);
+      content: "❯";
+      @media screen and (min-width:rem(600)) {
+        content: none;
+      }
+    }
+  }
+  
+  &-accordionTitle{
+    text-transform: uppercase;
+    padding: 0.7rem 1rem;
+    font-weight: 600;
+    border: solid 1px var(--negroPlus);
+    &:focus-within{
+      //outline: solid rem(1) var(--blanco);
+    }
+    @media screen and (min-width:rem(600)) {
+      border: none;
+    }
+  }
+  
+  &-accordionHeadToggle{
+    display: none !important;
+    &:checked ~ .dataCenter-accordionBody{
+      color: var(--blanco);
+      background-color: var(--negro);
+      //--row : 2fr;
+      height: auto;
+    }
+    @media screen and (min-width:rem(600)) {
+      &:checked ~ .dataCenter-accordionBody{
+        color: none;
+        background-color: initial;
+        color: var(--negro);
+      }
+    }
+  }
+  
+  &-accordionBody{
+    height: 0;
+    --row: 0fr;
+    //display: grid;
+    //grid-template-rows: var(--row, 0fr);
+    overflow: hidden;
+    transition: height 0.3s linear;
+  
+    @media screen and (min-width:rem(600)) {
+      height: initial;
+    }
+  }
+  
+  &-accordionItem{
+    padding: 0.7rem 1rem;
+  }
+}

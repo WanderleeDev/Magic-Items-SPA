@@ -1,0 +1,81 @@
+@use '@scss/shared.scss' as *;
+
+.newsletter{
+  @include flex(flex, column, wrap, center, center);
+  padding: 3rem 0;
+  @media screen and (min-width:rem(900)) {
+    grid-column: 1/4;
+  }
+  @media screen and (min-width:rem(1050)) {
+    grid-column: 1/end;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  
+  &-info{
+    grid-row  : 1/3;
+    grid-column: 2/4;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  &-wrapper{
+    //width: min(70vw, 23rem);
+    display: flex;
+    justify-content: space-around;
+    margin-block-start: 1.5rem;
+    margin-inline: auto;
+    background-color: aliceblue;
+    border-radius: 2rem;
+    @media screen and (min-width:rem(1050)) {
+      grid-column: 5/7;
+    }
+  }
+  
+  &-response{
+    width: 90%;
+    padding: 0.7rem;
+    border-radius: 2rem 0 0 2rem;
+    flex-grow: 1;
+    caret-color: map-get($colors, clr-primary );
+  }
+  
+  &-submitResponse{
+    width: 50%;
+    padding: 0.5rem;
+    border-radius: 0 2rem 2rem 0;
+    font-weight: 600;
+    color: #fff;
+    background-color: map-get($colors , clr-primary );
+    cursor: pointer;
+    &:hover{
+      opacity: 0.9;
+    } 
+  }
+  
+  &-conditionsBlock{
+    @include flex(flex,row,wrap,center,center,0.5rem);
+    margin-block-start: 0.7rem;
+    @media screen and (min-width:rem(1050)) {
+      grid-area: 2/5/3/7;
+      //grid-column: 5/7;
+    }
+  }
+  
+  &-conditionCheck{
+    accent-color: map-get($colors , clr-primary );
+  }
+  
+  &-conditions{
+    font-size: 0.7rem;
+    letter-spacing: initial;
+    line-height: 1.2;
+  }
+  
+  &-seeConditions{
+    &:hover,
+    &:focus{
+      color: rgba(0, 0, 0, 0.667);
+    }
+  }
+}

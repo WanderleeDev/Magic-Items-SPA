@@ -1,5 +1,4 @@
 import './style.scss'
-import { addComponents } from './src/assets/js/utils/addComponent'
-import Header from './src/assets/js/components/Header.js/Header'
+import App from './App'
 
-addComponents.addElement('#app', Header)
+document.addEventListener('DOMContentLoaded', App('#app'))

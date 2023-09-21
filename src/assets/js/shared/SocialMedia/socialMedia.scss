@@ -1,0 +1,31 @@
+@use '@scss/shared.scss' as *;
+
+.socialMedia{
+  @include flex(flex, row, wrap, center, center);
+  position: relative;
+  place-content: center;
+  //width: max-content;
+  margin-inline: auto;  
+  padding: 2rem 0;
+  gap: min(4vw, 2.5rem);
+  @media screen and (min-width:rem(900)) {
+    grid-column: 4/7;
+  }
+  @media screen and (min-width:rem(1050)) {
+    grid-area: 2/5/3/7;
+  }
+  
+  &-title{
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  &-icon{
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: solid rem(1) var(--blanco);
+    }
+}
